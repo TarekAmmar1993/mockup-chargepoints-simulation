@@ -1,12 +1,11 @@
 import { useState } from "react";
-
 import FormInput from "./FormInput.tsx";
-import { useFormContext } from "../context"; // <-- use context, not useForm
+import { useFormContext } from "../context";
 
 const Form = ({
-  toggleDisplayResults,
+  setShowResults,
 }: {
-  toggleDisplayResults: () => void;
+  setShowResults: (show: boolean) => void;
 }) => {
   const { state, dispatch } = useFormContext();
   const [errors, setErrors] = useState<{
@@ -44,6 +43,12 @@ const Form = ({
     }
   };
 
+  const handleSubmit = (e: React.FormEvent) => {
+    window.location.hash = "report";
+    e.preventDefault();
+    setShowResults(true);
+  };
+
   const resetForm = () => {
     dispatch({ type: "SET_NB_CHARGEPOINTS", payload: 0 });
     dispatch({ type: "SET_SATURATION", payload: 100 });
@@ -54,12 +59,8 @@ const Form = ({
       nbChargepoints: "",
       simulationInterval: "",
     });
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    window.location.hash = "report";
-    e.preventDefault();
-    toggleDisplayResults();
+    window.history.replaceState(null, "", "/");
+    setShowResults(false);
   };
 
   const isDisabled =
@@ -176,9 +177,12 @@ const Form = ({
             />
             <div className="flex justify-between gap-3 xl:col-span-full">
               <button
+                disabled={
+                  state.nbChargepoints === 0 && state.simulationInterval === 0
+                }
                 onClick={resetForm}
                 type="reset"
-                className="w-40 cursor-pointer rounded-full bg-red-600 py-3 text-sm text-white transition hover:bg-red-800 active:scale-95"
+                className="w-40 cursor-pointer rounded-full bg-red-600 py-3 text-sm text-white transition hover:bg-red-800 active:scale-95 disabled:cursor-not-allowed disabled:bg-gray-400"
               >
                 <p className="mb-0.5">Reset</p>
               </button>

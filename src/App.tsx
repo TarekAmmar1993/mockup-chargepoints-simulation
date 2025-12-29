@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="relative">
       <FormContextProvider>
-        <Form toggleDisplayResults={() => setShowResults(true)} />
+        <Form setShowResults={setShowResults} />
         <Report isReady={showResults} />
         <Analytics />
       </FormContextProvider>
