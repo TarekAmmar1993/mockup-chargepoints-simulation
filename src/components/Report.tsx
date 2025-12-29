@@ -17,7 +17,7 @@ const Report = ({ isReady }: { isReady: boolean }) => {
   }, [isReady]);
 
   return (
-    <div id="report">
+    <div id="report" className="py-6">
       {isLoading ? (
         <Loading />
       ) : isReady ? (

@@ -9,13 +9,19 @@ function App() {
   const [showResults, setShowResults] = useState(false);
 
   return (
-    <>
+    <div className="relative">
       <FormContextProvider>
         <Form toggleDisplayResults={() => setShowResults(true)} />
         <Report isReady={showResults} />
         <Analytics />
       </FormContextProvider>
-    </>
+      <a
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        className="fixed right-5 bottom-5 flex h-8 w-8 cursor-pointer items-center justify-center rounded-xl bg-green-300/65"
+      >
+        <img src="/arrow-up.svg" alt="anchor navigation icon" />
+      </a>
+    </div>
   );
 }
 
