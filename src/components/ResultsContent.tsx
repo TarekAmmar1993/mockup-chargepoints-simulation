@@ -4,8 +4,11 @@ import { charepointsByMonth, charepointsByDay } from "../data/chargepoints";
 import { months } from "../data/months";
 import { days } from "../data/days";
 import { stats } from "../data/stats";
+import { useFormContext } from "../context";
 
 const ResultsContent = () => {
+  const { state } = useFormContext();
+
   return (
     <>
       <div className="rounded-3xl bg-[#161d1acc] px-4 py-8 md:px-16">
@@ -18,7 +21,7 @@ const ResultsContent = () => {
               Chargepoints
             </p>
             <p className="text-foreground text-sm font-semibold text-green-500">
-              33 units
+              {state.nbChargepoints} units
             </p>
           </div>
           <div>
@@ -26,7 +29,7 @@ const ResultsContent = () => {
               Saturation
             </p>
             <p className="text-foreground text-sm font-semibold text-green-500">
-              33%
+              {state.saturation}%
             </p>
           </div>
           <div>
@@ -34,7 +37,7 @@ const ResultsContent = () => {
               Car Consumption
             </p>
             <p className="text-foreground text-sm font-semibold text-green-500">
-              33 kWh
+              {state.carConsumption} kWh
             </p>
           </div>
           <div>
@@ -42,7 +45,7 @@ const ResultsContent = () => {
               Charging Power
             </p>
             <p className="text-foreground text-sm font-semibold text-green-500">
-              33 kW
+              {state.chargingPower} kW
             </p>
           </div>
           <div>
@@ -50,7 +53,7 @@ const ResultsContent = () => {
               Duration
             </p>
             <p className="text-foreground text-sm font-semibold text-green-500">
-              33 days
+              {state.simulationInterval} days
             </p>
           </div>
         </div>

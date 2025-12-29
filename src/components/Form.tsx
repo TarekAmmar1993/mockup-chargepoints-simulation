@@ -1,38 +1,14 @@
-import { useReducer, useState } from "react";
-import type { State, Action } from "../types/types.ts";
+import { useState } from "react";
+
 import FormInput from "./FormInput.tsx";
-
-const initialState: State = {
-  nbChargepoints: 0,
-  saturation: 100,
-  carConsumption: 18,
-  chargingPower: 11,
-  simulationInterval: 0,
-};
-
-function reducer(state: State, action: Action): State {
-  switch (action.type) {
-    case "SET_NB_CHARGEPOINTS":
-      return { ...state, nbChargepoints: action.payload };
-    case "SET_SATURATION":
-      return { ...state, saturation: action.payload };
-    case "SET_CAR_CONSUMPTION":
-      return { ...state, carConsumption: action.payload };
-    case "SET_CHARGING_POWER":
-      return { ...state, chargingPower: action.payload };
-    case "SET_SIMULATION_INTERVAL":
-      return { ...state, simulationInterval: action.payload };
-    default:
-      return state;
-  }
-}
+import { useFormContext } from "../context"; // <-- use context, not useForm
 
 const Form = ({
   toggleDisplayResults,
 }: {
   toggleDisplayResults: () => void;
 }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const { state, dispatch } = useFormContext();
   const [errors, setErrors] = useState<{
     nbChargepoints: string;
     simulationInterval: string;
@@ -84,10 +60,6 @@ const Form = ({
     window.location.hash = "report";
     e.preventDefault();
     toggleDisplayResults();
-    resetForm();
-
-    console.log("Form submitted", state);
-    // Handle form submission logic here
   };
 
   const isDisabled =
@@ -202,14 +174,22 @@ const Form = ({
               }
               onBlur={() => handleBlur("simulationInterval")}
             />
-
-            <button
-              disabled={isDisabled}
-              type="submit"
-              className="mt-5 w-fit cursor-pointer justify-self-end rounded-full bg-green-600 px-8 py-3 text-sm text-white transition duration-300 hover:bg-green-800 disabled:cursor-not-allowed disabled:bg-gray-400 md:px-16 xl:col-span-full"
-            >
-              Run Simulation
-            </button>
+            <div className="flex justify-between gap-3">
+              <button
+                onClick={resetForm}
+                type="reset"
+                className="mt-5 w-fit cursor-pointer justify-self-end rounded-full bg-red-600 px-8 py-3 text-sm text-white transition duration-300 hover:bg-red-800 disabled:cursor-not-allowed disabled:bg-gray-400 md:px-16 xl:col-span-full"
+              >
+                reset
+              </button>
+              <button
+                disabled={isDisabled}
+                type="submit"
+                className="mt-5 w-fit cursor-pointer justify-self-end rounded-full bg-green-600 px-8 py-3 text-sm text-white transition duration-300 hover:bg-green-800 disabled:cursor-not-allowed disabled:bg-gray-400 md:px-16 xl:col-span-full"
+              >
+                Run Simulation
+              </button>
+            </div>
           </form>
         </div>
       </section>
