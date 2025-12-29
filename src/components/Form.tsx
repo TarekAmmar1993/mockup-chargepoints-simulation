@@ -174,20 +174,20 @@ const Form = ({
               }
               onBlur={() => handleBlur("simulationInterval")}
             />
-            <div className="flex justify-between gap-3">
+            <div className="flex justify-between gap-3 xl:col-span-full">
               <button
                 onClick={resetForm}
                 type="reset"
-                className="mt-5 w-fit cursor-pointer justify-self-end rounded-full bg-red-600 px-8 py-3 text-sm text-white transition duration-300 hover:bg-red-800 disabled:cursor-not-allowed disabled:bg-gray-400 md:px-16 xl:col-span-full"
+                className="w-40 cursor-pointer rounded-full bg-red-600 py-3 text-sm text-white transition hover:bg-red-800 active:scale-95"
               >
-                reset
+                <p className="mb-0.5">Reset</p>
               </button>
               <button
-                disabled={isDisabled}
                 type="submit"
-                className="mt-5 w-fit cursor-pointer justify-self-end rounded-full bg-green-600 px-8 py-3 text-sm text-white transition duration-300 hover:bg-green-800 disabled:cursor-not-allowed disabled:bg-gray-400 md:px-16 xl:col-span-full"
+                disabled={isDisabled}
+                className="w-40 cursor-pointer rounded-full bg-green-600 py-3 text-sm text-white transition hover:bg-green-800 active:scale-95 disabled:cursor-not-allowed disabled:bg-gray-400"
               >
-                Run Simulation
+                <p className="mb-0.5">Run Simulation</p>
               </button>
             </div>
           </form>
