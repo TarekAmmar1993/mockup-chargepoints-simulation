@@ -1,73 +1,69 @@
-# React + TypeScript + Vite
+# Chargepoints Simulation app
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a simulation app that helps parking space owners run simulations about installing charge points for electric vehicles. The user fills in a quick form specifying the number of charge points, car consumption (kWh), charging power per point (kW), etc., and generates a full report containing graphs and useful insights.
 
-Currently, two official plugins are available:
+## Prerequisites
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Before you begin, ensure you have the following installed:
 
-## React Compiler
+- **Node.js** (v18 or higher)
+- **pnpm** (v8 or higher) or **npm** / **yarn** as alternatives
+- **Typescript**
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Getting Started
 
-## Expanding the ESLint configuration
+### 1. Extract the project / Clone the project locally
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Unzip the `.zip` file and open the extracted folder with you favorite IDE
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 2. Install Dependencies
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+pnpm i
+# or
+npm install
+# or
+yarn install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 3. Run the Development Server
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+pnpm dev
+# or
+npm run dev
+# or
+yarn dev
 ```
+
+### 4. See the magic
+
+Open [http://localhost:5173](http://localhost:5173) with your browser to see the result.
+
+## Features
+
+- **Interactive Form** - User-friendly form to input simulation parameters (number of chargepoints, saturation level, car consumption, charging power, simulation duration)
+- **Real-time Validation** - Form validation with friendly error messages for better user experience
+- **Data Visualization** - Multiple interactive charts (Bar charts, Line charts) to visualize charging events and energy distribution
+- **Simulation Reports** - Comprehensive reports displaying:
+  - Simulation parameters summary
+  - Charging values per chargepoint by month
+  - Example data from a randomly chosen day
+  - Charge events statistics (per year, month, week, day)
+  - Energy consumption metrics
+- **Responsive Design** - Mobile-friendly interface that works seamlessly across all devices
+- **State Management** - Global state management using React Context API for form data persistence
+- **Reset Functionality** - Easy reset button to clear form data and start a new simulation
+
+### Tech Stack
+
+- **Vite** - Next-generation frontend build tool for fast development and optimized production builds
+- **React 18** - Modern JavaScript library for building user interfaces with hooks
+- **TypeScript** - Type-safe development for improved code quality and maintainability
+- **Tailwind CSS 4** - Utility-first CSS framework for rapid UI development
+- **Recharts** - Composable charting library built on React components for data visualization
+- **React Context API** - Built-in state management for global form data sharing
+
+## Notes
+
+> **P.S.** The `useEffect` hook and timeout in the `<Report />` component are used solely to simulate the loading time before displaying the simulation results and charts. In a production environment, this delay would represent the actual computation time of the simulation algorithm.
