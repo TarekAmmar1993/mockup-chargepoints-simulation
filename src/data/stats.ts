@@ -12,19 +12,19 @@ export const stats = [
     icon: "plug",
   },
   {
-    topline: "Number of charging events",
+    topline: "Average number of charging events",
     value: "417",
     description: "per month",
     icon: "plug",
   },
   {
-    topline: "Number of charging events",
+    topline: "Average number of charging events",
     value: "96",
     description: "per week",
     icon: "plug",
   },
   {
-    topline: "Number of charging events",
+    topline: "Average number of charging events",
     value: "14",
     description: "per day",
     icon: "plug",
