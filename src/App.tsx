@@ -19,7 +19,7 @@ function App() {
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         className="fixed right-5 bottom-5 flex h-8 w-8 cursor-pointer items-center justify-center rounded-xl bg-green-500 hover:bg-green-300"
       >
-        <img src="/arrow-up.svg" alt="anchor navigation icon" />
+        <img src="icons/arrow-up.svg" alt="anchor navigation icon" />
       </a>
     </div>
   );

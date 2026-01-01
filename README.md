@@ -64,6 +64,16 @@ Open [http://localhost:5173](http://localhost:5173) with your browser to see the
 - **Recharts** - Composable charting library built on React components for data visualization
 - **React Context API** - Built-in state management for global form data sharing
 
+## Screenshots
+
+Below are some screenshots of the Chargepoints Simulation app:
+
+![Screenshot 1](./public/screenshots/screenshot-1.png)
+![Screenshot 2](./public/screenshots/screenshot-2.png)
+![Screenshot 3](./public/screenshots/screenshot-3.png)
+![Screenshot 4](./public/screenshots/screenshot-4.png)
+![Screenshot 5](./public/screenshots/screenshot-5.png)
+
 ## Notes
 
 > **P.S.** The `useEffect` hook and timeout in the `<Report />` component are used solely to simulate the loading time before displaying the simulation results and charts. In a production environment, this delay would represent the actual computation time of the simulation algorithm.

@@ -22,7 +22,7 @@ export function StatsCard({
 
       <div className="h-fit rounded-lg bg-green-950 p-2 opacity-90">
         <img
-          src={`/${icon}.svg`}
+          src={`icons/${icon}.svg`}
           alt="card icon"
           className="max-w-none"
           height={24}
