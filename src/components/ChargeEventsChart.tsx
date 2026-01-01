@@ -96,6 +96,7 @@ const ChargeEventsChart = () => {
           maxWidth: "70vw",
           maxHeight: "70vh",
           margin: "0 auto",
+          aspectRatio: 1.618,
         }}
         responsive
         data={chargeEvents[dropdownMenuOptions.indexOf(option)].chargepoints}
