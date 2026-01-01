@@ -2,7 +2,7 @@ export const stats = [
   {
     topline: "Total Energy Delivered",
     value: "45000 kWh",
-    description: "this year",
+    description: "in 2025",
     icon: "zap",
   },
   {

@@ -1,13 +1,17 @@
-import { useState } from "react";
 import {
-  BarChart,
-  Bar,
+  AreaChart,
+  Area,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
   type TooltipContentProps,
 } from "recharts";
+import { chargeEvents } from "../data/chargeEvents";
+import { useState } from "react";
+
+const dropdownMenuOptions = ["year", "month", "week", "day"];
+
 const CustomTooltip = ({
   active,
   payload,
@@ -23,25 +27,15 @@ const CustomTooltip = ({
           backdropFilter: "blur(8px)",
         }}
       >
-        <p className="mb-2 font-bold text-green-500">{`Chargepoint ${label}`}</p>
-        <p>{`Total Energy Charged: ${payload[0].value} kW`}</p>
+        <p className="mb-2 font-bold text-green-500">{label}</p>
+        <p>{payload[0].value} charging events</p>
       </div>
     );
   }
-
   return null;
 };
-const ChargepointsChart = ({
-  data,
-  dropdownMenuOptions,
-  title,
-  description,
-}: {
-  data: any[];
-  dropdownMenuOptions: string[];
-  title: string;
-  description: string;
-}) => {
+
+const ChargeEventsChart = () => {
   const [option, setOption] = useState(dropdownMenuOptions[0]);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -51,8 +45,11 @@ const ChargepointsChart = ({
   };
   return (
     <div className="my-8 flex flex-col rounded-3xl bg-[#161d1acc] px-4 py-8 md:border-8 md:px-16">
-      <h2 className="text-start text-white">{title}</h2>
-      <p className="mb-6 text-start text-[#87928c]">{description}</p>
+      <h2 className="text-start text-white">Number of charging events</h2>
+      <p className="mb-6 text-start text-[#87928c]">
+        The number of charging events per year/month/week/day
+      </p>
+
       <div className="relative h-14">
         <div className="absolute top-0 right-0 z-10 flex w-44 flex-col text-sm">
           <button
@@ -93,7 +90,7 @@ const ChargepointsChart = ({
         </div>
       </div>
 
-      <BarChart
+      <AreaChart
         style={{
           width: "100%",
           maxWidth: "70vw",
@@ -101,7 +98,7 @@ const ChargepointsChart = ({
           margin: "0 auto",
         }}
         responsive
-        data={data[dropdownMenuOptions.indexOf(option)].chargepoints}
+        data={chargeEvents[dropdownMenuOptions.indexOf(option)].chargepoints}
         margin={{
           top: 20,
           right: 40,
@@ -109,11 +106,15 @@ const ChargepointsChart = ({
           bottom: 60,
         }}
       >
-        <CartesianGrid strokeDasharray="3 3 " />
+        <CartesianGrid strokeDasharray="3 3" />
         <XAxis
-          dataKey="chargepoint"
+          dataKey={option}
+          interval={
+            option === "day" ? 30 : option === "week" ? 5 : "preserveEnd"
+          }
+          angle={-45}
           label={{
-            value: "Chargepoints",
+            value: "Time",
             position: "bottom",
             offset: 45,
             textAnchor: "middle",
@@ -121,16 +122,14 @@ const ChargepointsChart = ({
           tickMargin={30}
         />
         <YAxis
-          dataKey="totalEnergyCharged"
           width="auto"
           label={{
-            value: "Charging values (in kW)",
+            value: "number of charging events",
             position: "insideLeft",
             angle: -90,
             textAnchor: "middle",
           }}
         />
-
         <Tooltip
           contentStyle={{
             backgroundColor: "hsl(150 8% 15% / 0.9)",
@@ -142,16 +141,15 @@ const ChargepointsChart = ({
           cursor={{ fill: "hsl(150 8% 15% / 0.5)" }}
           content={CustomTooltip}
         />
-
-        <Bar
-          dataKey="totalEnergyCharged"
+        <Area
+          type="monotone"
+          dataKey="nbChargeEvents"
+          stroke="none"
           fill="#21c45d"
-          activeBar={{ fill: "#2d864d" }}
-          radius={[10, 10, 0, 0]}
         />
-      </BarChart>
+      </AreaChart>
     </div>
   );
 };
 
-export default ChargepointsChart;
+export default ChargeEventsChart;

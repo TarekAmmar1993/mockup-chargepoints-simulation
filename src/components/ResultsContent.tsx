@@ -5,6 +5,7 @@ import { months } from "../data/months";
 import { days } from "../data/days";
 import { stats } from "../data/stats";
 import { useFormContext } from "../context";
+import ChargeEventsChart from "./ChargeEventsChart";
 
 const ResultsContent = () => {
   const { state } = useFormContext();
@@ -62,7 +63,7 @@ const ResultsContent = () => {
         data={charepointsByMonth}
         dropdownMenuOptions={months}
         title="Charging Values (in kW) per Chargepoint"
-        description=" Total kW delivered by each Chargepoint"
+        description=" Total kW delivered by each Chargepoint in 2025"
       />
       <ChargepointsChart
         data={charepointsByDay}
@@ -70,6 +71,8 @@ const ResultsContent = () => {
         title="An exemplary day"
         description="Total kW delivered by each Chargepoint by day"
       />
+
+      <ChargeEventsChart />
 
       <div className="grid justify-center gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {stats.map((stat, index) => (
