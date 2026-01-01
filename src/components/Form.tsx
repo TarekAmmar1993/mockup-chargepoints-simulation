@@ -84,7 +84,10 @@ const Form = ({
         </div>
 
         <div className="w-full rounded-xl border border-white/10 bg-[#00A63E]/0 p-8 backdrop-blur-sm">
-          <form onSubmit={handleSubmit} className="grid gap-9 xl:grid-cols-2">
+          <form
+            onSubmit={handleSubmit}
+            className="grid grid-cols-1 gap-9 xl:grid-cols-2"
+          >
             <FormInput
               label="Number of chargepoints"
               name="nbCharpoints"
