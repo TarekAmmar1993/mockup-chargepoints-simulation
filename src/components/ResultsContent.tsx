@@ -2,7 +2,6 @@ import { StatsCard } from "./StatsCard";
 import ChargepointsChart from "./ChargepointsChart";
 import { charepointsByMonth, charepointsByDay } from "../data/chargepoints";
 import { months } from "../data/months";
-import { days } from "../data/days";
 import { stats } from "../data/stats";
 import { useFormContext } from "../context";
 import ChargeEventsChart from "./ChargeEventsChart";
@@ -67,9 +66,8 @@ const ResultsContent = () => {
       />
       <ChargepointsChart
         data={charepointsByDay}
-        dropdownMenuOptions={days}
         title="An exemplary day"
-        description="Total kW delivered by each Chargepoint by day"
+        description="Total kW delivered by each Chargepoint on Tuesday, 14th January 2025"
       />
 
       <ChargeEventsChart />

@@ -32,7 +32,7 @@ const Form = ({
         if (state.simulationInterval <= 0) {
           setErrors((prev) => ({
             ...prev,
-            simulationInterval: "Please enter a valid simulation interval.",
+            simulationInterval: "Please enter a valid number of days.",
           }));
         } else {
           setErrors((prev) => ({ ...prev, simulationInterval: "" }));
