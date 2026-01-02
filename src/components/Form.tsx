@@ -22,7 +22,12 @@ const Form = ({
         if (state.nbChargepoints <= 0) {
           setErrors((prev) => ({
             ...prev,
-            nbChargepoints: "Please enter a valid number of chargepoints.",
+            nbChargepoints: "Number of chargepoints should be positive",
+          }));
+        } else if (!Number.isInteger(state.nbChargepoints)) {
+          setErrors((prev) => ({
+            ...prev,
+            nbChargepoints: "Number of chargepoints should be an integer",
           }));
         } else {
           setErrors((prev) => ({ ...prev, nbChargepoints: "" }));
@@ -32,7 +37,12 @@ const Form = ({
         if (state.simulationInterval <= 0) {
           setErrors((prev) => ({
             ...prev,
-            simulationInterval: "Please enter a valid number of days.",
+            simulationInterval: "Simulation interval should be positive",
+          }));
+        } else if (!Number.isInteger(state.simulationInterval)) {
+          setErrors((prev) => ({
+            ...prev,
+            simulationInterval: "Simulation interval should be an integer",
           }));
         } else {
           setErrors((prev) => ({ ...prev, simulationInterval: "" }));
