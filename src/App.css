@@ -30,6 +30,15 @@
   h6 {
     @apply mb-1 text-base font-medium;
   }
+  .section-wrapper {
+    @apply rounded-3xl bg-[#161d1acc] px-4 py-8 md:px-16;
+  }
+  .parameter-summary-title{
+    @apply text-[#87928c] md:text-2xl
+  }
+  .parameter-summary-content{
+    @apply font-semibold text-green-500 md:text-xl
+  }
   
 }
 

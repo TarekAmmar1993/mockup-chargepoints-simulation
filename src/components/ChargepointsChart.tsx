@@ -17,7 +17,7 @@ const ChargepointsChart = ({
   const [option, setOption] = useState(dropdownMenuOptions?.[0] || "");
 
   return (
-    <div className="flex flex-col rounded-3xl bg-[#161d1acc] px-4 py-8 md:px-16">
+    <div className="section-wrapper flex flex-col">
       <h2 className="text-start text-white">{title}</h2>
       <p className="mb-6 text-start text-[#87928c]">{description}</p>
       {dropdownMenuOptions && (

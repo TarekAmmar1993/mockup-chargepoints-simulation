@@ -11,46 +11,34 @@ const ResultsContent = () => {
 
   return (
     <div className="flex flex-col gap-14">
-      <div className="rounded-3xl bg-[#161d1acc] px-4 py-8 md:px-16">
+      <div className="section-wrapper">
         <h2 className="text-center text-white">Simulation Parameters</h2>
         <div className="grid grid-cols-2 gap-x-6 gap-y-3 sm:grid-cols-3 lg:grid-cols-5">
           <div className="flex flex-col justify-between">
-            <p className="text-muted-foreground text-[#87928c] md:text-2xl">
-              Chargepoints
-            </p>
-            <p className="text-foreground font-semibold text-green-500 md:text-xl">
+            <p className="parameter-summary-title">Chargepoints</p>
+            <p className="parameter-summary-content">
               {state.nbChargepoints} units
             </p>
           </div>
           <div className="flex flex-col justify-between">
-            <p className="text-muted-foreground text-[#87928c] md:text-2xl">
-              Saturation
-            </p>
-            <p className="text-foreground font-semibold text-green-500 md:text-xl">
-              {state.saturation}%
-            </p>
+            <p className="parameter-summary-title">Saturation</p>
+            <p className="parameter-summary-content">{state.saturation}%</p>
           </div>
           <div className="flex flex-col justify-between">
-            <p className="text-muted-foreground text-[#87928c] md:text-2xl">
-              Car Consumption
-            </p>
-            <p className="text-foreground font-semibold text-green-500 md:text-xl">
+            <p className="parameter-summary-title">Car Consumption</p>
+            <p className="parameter-summary-content">
               {state.carConsumption} kWh
             </p>
           </div>
           <div className="flex flex-col justify-between">
-            <p className="text-muted-foreground text-[#87928c] md:text-2xl">
-              Charging Power
-            </p>
-            <p className="text-foreground font-semibold text-green-500 md:text-xl">
+            <p className="parameter-summary-title">Charging Power</p>
+            <p className="parameter-summary-content">
               {state.chargingPower} kW
             </p>
           </div>
           <div className="flex flex-col justify-between">
-            <p className="text-muted-foreground text-[#87928c] md:text-2xl">
-              Duration
-            </p>
-            <p className="text-foreground font-semibold text-green-500 md:text-xl">
+            <p className="parameter-summary-title">Duration</p>
+            <p className="parameter-summary-content">
               {state.simulationInterval} days
             </p>
           </div>
