@@ -1,36 +1,7 @@
 import { useState } from "react";
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  type TooltipContentProps,
-} from "recharts";
-const CustomTooltip = ({
-  active,
-  payload,
-  label,
-}: TooltipContentProps<string | number, string>) => {
-  if (active && payload && payload.length) {
-    return (
-      <div
-        className="rounded-lg p-4"
-        style={{
-          backgroundColor: "hsl(150 8% 15% / 0.9)",
-          color: "white",
-          backdropFilter: "blur(8px)",
-        }}
-      >
-        <p className="mb-2 font-bold text-green-500">{`Chargepoint ${label}`}</p>
-        <p>{`Total Energy Charged: ${payload[0].value} kW`}</p>
-      </div>
-    );
-  }
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
+import { ChartTooltip } from "./ui/Tooltip";
 
-  return null;
-};
 const ChargepointsChart = ({
   data,
   dropdownMenuOptions,
@@ -151,7 +122,16 @@ const ChargepointsChart = ({
             border: "none",
           }}
           cursor={{ fill: "hsl(150 8% 15% / 0.5)" }}
-          content={CustomTooltip}
+          content={
+            <ChartTooltip
+              valueLabel=" kW energy charged"
+              active={false}
+              payload={[]}
+              coordinate={undefined}
+              accessibilityLayer={false}
+              activeIndex={undefined}
+            />
+          }
         />
 
         <Bar

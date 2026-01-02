@@ -5,35 +5,12 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  type TooltipContentProps,
 } from "recharts";
 import { chargeEvents } from "../data/chargeEvents";
 import { useState } from "react";
+import { ChartTooltip } from "./ui/Tooltip";
 
 const dropdownMenuOptions = ["year", "month", "week", "day"];
-
-const CustomTooltip = ({
-  active,
-  payload,
-  label,
-}: TooltipContentProps<string | number, string>) => {
-  if (active && payload && payload.length) {
-    return (
-      <div
-        className="rounded-lg p-4"
-        style={{
-          backgroundColor: "hsl(150 8% 15% / 0.9)",
-          color: "white",
-          backdropFilter: "blur(8px)",
-        }}
-      >
-        <p className="mb-2 font-bold text-green-500">{label}</p>
-        <p>{payload[0].value} charging events</p>
-      </div>
-    );
-  }
-  return null;
-};
 
 const ChargeEventsChart = () => {
   const [option, setOption] = useState(dropdownMenuOptions[0]);
@@ -144,7 +121,16 @@ const ChargeEventsChart = () => {
             border: "none",
           }}
           cursor={{ fill: "hsl(150 8% 15% / 0.5)" }}
-          content={CustomTooltip}
+          content={
+            <ChartTooltip
+              valueLabel="charging events"
+              active={false}
+              payload={[]}
+              coordinate={undefined}
+              accessibilityLayer={false}
+              activeIndex={undefined}
+            />
+          }
         />
         <Area
           type="monotone"

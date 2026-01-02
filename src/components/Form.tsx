@@ -1,7 +1,7 @@
 import { useState } from "react";
 import FormInput from "./FormInput.tsx";
 import { useFormContext } from "../context";
-import Button from "./ui/button.tsx";
+import Button from "./ui/Button.tsx";
 
 const Form = ({
   setShowResults,
