@@ -36,3 +36,8 @@ export interface ButtonProps {
   disabled: boolean;
   iconUrl: string;
 }
+export interface ChartDropdownProps {
+  options: string[];
+  selected: string;
+  onSelect: (option: string) => void;
+}
