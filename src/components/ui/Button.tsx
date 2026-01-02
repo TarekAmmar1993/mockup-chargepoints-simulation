@@ -1,10 +1,5 @@
-type ButtonProps = {
-  text: string;
-  type: "submit" | "reset";
-  onClick?: () => void;
-  disabled: boolean;
-  iconUrl: string;
-};
+import type { ButtonProps } from "../../types/types";
+
 const Button = ({ text, type, onClick, disabled, iconUrl }: ButtonProps) => {
   return (
     <button

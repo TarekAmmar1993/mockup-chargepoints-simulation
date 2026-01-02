@@ -1,17 +1,6 @@
-interface StatsCardProps {
-  topline: string;
-  value: string | number;
-  description?: string;
-  icon: string;
-}
-//import zap from "../assets/zap.svg";
+import type { CardProps } from "../../types/types";
 
-export function StatsCard({
-  topline,
-  value,
-  description,
-  icon,
-}: StatsCardProps) {
+export function Card({ topline, value, description, icon }: CardProps) {
   return (
     <div className="flex cursor-pointer justify-between gap-6 rounded-3xl bg-[#161d1acc] p-7 first:col-span-full hover:bg-[#161d1aff]">
       <div className="flex flex-col items-start">

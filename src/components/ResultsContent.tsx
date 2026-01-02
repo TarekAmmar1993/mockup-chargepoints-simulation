@@ -1,4 +1,4 @@
-import { StatsCard } from "./StatsCard";
+import { Card } from "./ui/Card";
 import ChargepointsChart from "./ChargepointsChart";
 import { charepointsByMonth, charepointsByDay } from "../data/chargepoints";
 import { months } from "../data/months";
@@ -58,7 +58,7 @@ const ResultsContent = () => {
       </div>
       <div className="grid justify-center gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {stats.map((stat, index) => (
-          <StatsCard
+          <Card
             key={index}
             topline={stat.topline}
             value={stat.value}

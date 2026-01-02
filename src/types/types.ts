@@ -1,10 +1,10 @@
-export type State = {
+export interface State {
   nbChargepoints: number;
   saturation: number;
   carConsumption: number;
   chargingPower: number;
   simulationInterval: number;
-};
+}
 
 export type Action =
   | { type: "SET_NB_CHARGEPOINTS"; payload: number }
@@ -13,7 +13,7 @@ export type Action =
   | { type: "SET_CHARGING_POWER"; payload: number }
   | { type: "SET_SIMULATION_INTERVAL"; payload: number };
 
-export type FormInputProps = {
+export interface FormInputProps {
   label: string;
   name: string;
   type?: string;
@@ -22,4 +22,17 @@ export type FormInputProps = {
   error?: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur?: () => void;
-};
+}
+export interface CardProps {
+  topline: string;
+  value: string | number;
+  description?: string;
+  icon: string;
+}
+export interface ButtonProps {
+  text: string;
+  type: "submit" | "reset";
+  onClick?: () => void;
+  disabled: boolean;
+  iconUrl: string;
+}
