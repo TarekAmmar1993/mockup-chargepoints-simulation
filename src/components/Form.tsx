@@ -1,6 +1,7 @@
 import { useState } from "react";
 import FormInput from "./FormInput.tsx";
 import { useFormContext } from "../context";
+import Button from "./ui/button.tsx";
 
 const Form = ({
   setShowResults,
@@ -189,39 +190,21 @@ const Form = ({
               onBlur={() => handleBlur("simulationInterval")}
             />
             <div className="flex items-center justify-between gap-3 md:col-span-full">
-              <button
+              <Button
+                text={"reset"}
+                type={"reset"}
+                onClick={resetForm}
                 disabled={
                   state.nbChargepoints === 0 && state.simulationInterval === 0
                 }
-                onClick={resetForm}
-                type="reset"
-                className="flex cursor-pointer justify-center gap-2 rounded-full bg-red-600 px-4 py-3 text-sm whitespace-nowrap text-white transition hover:bg-red-800 active:scale-95 disabled:cursor-not-allowed disabled:bg-gray-400"
-              >
-                <div className="flex items-center">
-                  <img
-                    src="icons/reset.svg"
-                    alt="Reset icon"
-                    height="16"
-                    width="16"
-                  />
-                </div>
-                <p className="text-xs lg:text-base">Reset</p>
-              </button>
-              <button
-                type="submit"
+                iconUrl={"icons/reset.svg"}
+              />
+              <Button
+                text={"Run Simulation"}
+                type={"submit"}
                 disabled={isDisabled}
-                className="flex cursor-pointer justify-center gap-2 rounded-full bg-green-600 px-4 py-3 text-sm whitespace-nowrap text-white transition hover:bg-green-800 active:scale-95 disabled:cursor-not-allowed disabled:bg-gray-400"
-              >
-                <p className="text-xs lg:text-base">Run Simulation</p>
-                <div className="flex items-center">
-                  <img
-                    src="icons/chevron-right.svg"
-                    alt="run icon"
-                    height="16"
-                    width="16"
-                  />
-                </div>
-              </button>
+                iconUrl={"icons/run.svg"}
+              />
             </div>
           </form>
         </div>

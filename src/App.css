@@ -6,8 +6,8 @@
    padding-inline: 24px;
 
 }
-
-h1 {
+@layer base {
+  h1 {
     @apply mb-6 text-4xl font-bold;
   }
 
@@ -30,8 +30,7 @@ h1 {
   h6 {
     @apply mb-1 text-base font-medium;
   }
-
-input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(1);
+  
 }
+
 
