@@ -133,7 +133,7 @@ const Form = ({
                   </div>
                 </div>
                 <input
-                  name="saturation"
+                  id="saturation"
                   type="range"
                   min="20"
                   max="200"

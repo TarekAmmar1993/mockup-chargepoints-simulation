@@ -15,7 +15,7 @@ const FormInput = ({
       {label}
     </label>
     <input
-      name={name}
+      id={name}
       type={type}
       placeholder={placeholder}
       className={`w-full rounded-lg border bg-[#00A63E]/5 px-4 py-3 transition placeholder:text-sm focus:outline-none ${
