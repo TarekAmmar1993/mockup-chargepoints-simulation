@@ -34,7 +34,7 @@ export function ChargepointConfigInput({}: ChargepointConfigInputProps) {
 
   return (
     <div className="xl:col-span-2">
-      <label className="input-label">Chargepoint Configuration</label>
+      <p className="input-label">Chargepoint Configuration</p>
       <div className="flex flex-col items-center space-y-4 rounded border border-white/10 bg-white/5 p-4">
         {state.chargepoints.length === 0 ? (
           <p className="text-center text-sm text-gray-400">
