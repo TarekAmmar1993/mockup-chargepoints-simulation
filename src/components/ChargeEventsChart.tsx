@@ -64,7 +64,7 @@ const ChargeEventsChart = () => {
         <YAxis
           width="auto"
           label={{
-            value: "number of charging events",
+            value: "Number of charging events",
             position: "insideLeft",
             angle: -90,
             textAnchor: "middle",

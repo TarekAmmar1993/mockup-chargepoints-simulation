@@ -3,6 +3,17 @@ import FormInput from "./ui/FormInput.tsx";
 import { useFormContext } from "../context";
 import Button from "./ui/Button.tsx";
 import { ChargepointConfigInput } from "./ChargepointConfigInput.tsx";
+import type { State } from "../types/types.ts";
+
+const isFormEmpty = (state: State) => {
+  return (
+    state.chargepoints.length === 0 &&
+    state.simulationInterval === 0 &&
+    state.saturation === 100 &&
+    state.carConsumption === 18 &&
+    state.chargingPower === 11
+  );
+};
 
 const Form = ({
   setShowResults,
@@ -157,10 +168,7 @@ const Form = ({
               text="reset"
               type="reset"
               onClick={resetForm}
-              disabled={
-                state.chargepoints.length === 0 &&
-                state.simulationInterval === 0
-              }
+              disabled={isFormEmpty(state)}
               iconUrl={"icons/reset.svg"}
             />
             <Button
