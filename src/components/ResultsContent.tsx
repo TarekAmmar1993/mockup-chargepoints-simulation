@@ -10,7 +10,7 @@ const ResultsContent = () => {
   const { state } = useFormContext();
 
   return (
-    <div className="flex flex-col gap-14">
+    <section className="flex flex-col gap-14">
       <div className="section-wrapper">
         <h2 className="text-center text-white">Simulation Parameters</h2>
         <div className="grid grid-cols-2 gap-x-6 gap-y-3 sm:grid-cols-3 lg:grid-cols-5">
@@ -68,7 +68,7 @@ const ResultsContent = () => {
       />
 
       <ChargeEventsChart />
-    </div>
+    </section>
   );
 };
 

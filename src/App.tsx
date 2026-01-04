@@ -9,7 +9,7 @@ function App() {
   const [showResults, setShowResults] = useState(false);
 
   return (
-    <div className="relative">
+    <main className="relative">
       <FormContextProvider>
         <Form setShowResults={setShowResults} />
         <Report isReady={showResults} />
@@ -21,7 +21,7 @@ function App() {
       >
         <img src="icons/arrow-up.svg" alt="anchor navigation icon" />
       </a>
-    </div>
+    </main>
   );
 }
 
