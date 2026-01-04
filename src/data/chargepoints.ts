@@ -1,4 +1,4 @@
-export const charepointsByMonth = [
+export const chargepointsByMonth = [
   {
     month: "January",
     chargepoints: [
@@ -133,8 +133,7 @@ export const charepointsByMonth = [
   },
 ];
 
-
-export const charepointsByDay = [
+export const chargepointsByDay = [
   {
     day: "Monday",
     chargepoints: [

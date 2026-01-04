@@ -1,3 +1,9 @@
+import type { TooltipContentProps } from "recharts";
+
+export type ChartTooltipProps = TooltipContentProps<string | number, string> & {
+  valueLabel?: string;
+};
+
 export interface Chargepoint {
   id: string;
   count: number;

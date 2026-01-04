@@ -1,6 +1,6 @@
 import { Card } from "./ui/Card";
 import ChargepointsChart from "./ChargepointsChart";
-import { charepointsByMonth, charepointsByDay } from "../data/chargepoints";
+import { chargepointsByMonth, chargepointsByDay } from "../data/chargepoints";
 import { months } from "../data/months";
 import { stats } from "../data/stats";
 import { useFormContext } from "../context";
@@ -56,13 +56,13 @@ const ResultsContent = () => {
         ))}
       </div>
       <ChargepointsChart
-        data={charepointsByMonth}
+        data={chargepointsByMonth}
         dropdownMenuOptions={months}
         title="Charging Values (in kW) per Chargepoint"
         description=" Total kW delivered by each Chargepoint in 2025"
       />
       <ChargepointsChart
-        data={charepointsByDay}
+        data={chargepointsByDay}
         title="An exemplary day"
         description="Total kW delivered by each Chargepoint on Tuesday, 14th January 2025"
       />

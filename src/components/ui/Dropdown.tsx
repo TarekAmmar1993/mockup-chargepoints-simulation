@@ -20,7 +20,7 @@ export function ChartDropdown({
           type="button"
           onMouseEnter={() => setIsOpen(true)}
           onClick={() => setIsOpen(!isOpen)}
-          className="w-full cursor-pointer rounded bg-[#2d864d] px-4 py-2 pr-2 text-left text-white hover:bg-[#21c45d] focus:outline-none"
+          className="w-full cursor-pointer rounded bg-green-600 px-4 py-2 pr-2 text-left text-white hover:bg-green-500 focus:outline-none"
         >
           <span>{selected}</span>
           <svg
@@ -44,7 +44,7 @@ export function ChartDropdown({
         {isOpen && (
           <ul
             onMouseLeave={() => setIsOpen(false)}
-            className="mt-1 max-h-50 w-full overflow-y-auto rounded border border-gray-300 bg-[#191f1aE6] py-2 text-white shadow-md backdrop-blur-sm"
+            className="max-h-50 overflow-y-auto rounded border border-gray-300 bg-[#191f1aE6] py-2 text-white shadow-md backdrop-blur-sm"
           >
             {options.map((option) => (
               <li

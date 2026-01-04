@@ -1,8 +1,4 @@
-import type { TooltipContentProps } from "recharts";
-
-type ChartTooltipProps = TooltipContentProps<string | number, string> & {
-  valueLabel?: string;
-};
+import type { ChartTooltipProps } from "../../types/types";
 
 export const ChartTooltip = ({
   active,
@@ -20,10 +16,7 @@ export const ChartTooltip = ({
           backdropFilter: "blur(8px)",
         }}
       >
-        <p className="mb-2 font-bold text-green-500">
-          {}
-          {label}
-        </p>
+        <p className="mb-2 font-bold text-green-500">{label}</p>
         <p>{`${payload[0].value} ${valueLabel}`}</p>
       </div>
     );
