@@ -12,7 +12,7 @@ export function Card({ topline, value, description, icon }: CardProps) {
       <div className="h-fit rounded-lg bg-green-950 p-2 opacity-90">
         <img
           src={`icons/${icon}.svg`}
-          alt="card icon"
+          alt={description}
           className="max-w-none"
           height={24}
           width={24}
