@@ -1,5 +1,10 @@
+export interface Chargepoint {
+  id: string;
+  count: number;
+  power: number;
+}
 export interface State {
-  nbChargepoints: number;
+  chargepoints: Chargepoint[];
   saturation: number;
   carConsumption: number;
   chargingPower: number;
@@ -7,11 +12,18 @@ export interface State {
 }
 
 export type Action =
-  | { type: "SET_NB_CHARGEPOINTS"; payload: number }
+  | { type: "SET_CHARGEPOINTS"; payload: Chargepoint[] }
   | { type: "SET_SATURATION"; payload: number }
   | { type: "SET_CAR_CONSUMPTION"; payload: number }
   | { type: "SET_CHARGING_POWER"; payload: number }
-  | { type: "SET_SIMULATION_INTERVAL"; payload: number };
+  | { type: "SET_SIMULATION_INTERVAL"; payload: number }
+  | { type: "ADD_CHARGEPOINT"; payload: Chargepoint }
+  | { type: "REMOVE_CHARGEPOINT"; payload: string }
+  | {
+      type: "UPDATE_CHARGEPOINT";
+      payload: { id: string; field: "count" | "power"; value: number };
+    }
+  | { type: "RESET" };
 
 export interface FormInputProps {
   label: string;
@@ -31,10 +43,10 @@ export interface CardProps {
 }
 export interface ButtonProps {
   text: string;
-  type: "submit" | "reset";
+  type: "submit" | "reset" | "button";
   onClick?: () => void;
   disabled: boolean;
-  iconUrl: string;
+  iconUrl?: string;
 }
 export interface ChartDropdownProps {
   options: string[];

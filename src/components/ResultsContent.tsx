@@ -17,7 +17,7 @@ const ResultsContent = () => {
           <div className="flex flex-col justify-between">
             <p className="parameter-summary-title">Chargepoints</p>
             <p className="parameter-summary-content">
-              {state.nbChargepoints} units
+              {state.chargepoints.length} units
             </p>
           </div>
           <div className="flex flex-col justify-between">

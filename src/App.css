@@ -39,6 +39,9 @@
   .parameter-summary-content{
     @apply font-semibold text-green-500 md:text-xl
   }
+  .input-label{
+    @apply mb-2 block text-start text-sm font-semibold text-white
+  }
   
 }
 
