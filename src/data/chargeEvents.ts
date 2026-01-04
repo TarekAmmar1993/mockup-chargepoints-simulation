@@ -1,7 +1,7 @@
 export const chargeEvents = [
   {
     period: "year",
-    chargepoints: [
+    chargeEvents: [
       { year: "2020", nbChargeEvents: 1200 },
       { year: "2021", nbChargeEvents: 1150 },
       { year: "2022", nbChargeEvents: 4800 },
@@ -12,7 +12,7 @@ export const chargeEvents = [
   },
   {
     period: "month",
-    chargepoints: [
+    chargeEvents: [
       { month: "January", nbChargeEvents: 150 },
       { month: "February", nbChargeEvents: 200 },
       { month: "March", nbChargeEvents: 180 },
@@ -29,7 +29,7 @@ export const chargeEvents = [
   },
   {
     period: "week",
-    chargepoints: [
+    chargeEvents: [
       { week: "Week 1", nbChargeEvents: 70 },
       { week: "Week 2", nbChargeEvents: 80 },
       { week: "Week 3", nbChargeEvents: 75 },
@@ -86,7 +86,7 @@ export const chargeEvents = [
   },
   {
     period: "day",
-    chargepoints: [
+    chargeEvents: [
       { day: "1", nbChargeEvents: 40 },
       { day: "2", nbChargeEvents: 65 },
       { day: "3", nbChargeEvents: 38 },

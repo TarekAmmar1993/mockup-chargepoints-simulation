@@ -38,7 +38,7 @@ const ChargeEventsChart = () => {
           aspectRatio: 1.618,
         }}
         responsive
-        data={chargeEvents[dropdownMenuOptions.indexOf(option)].chargepoints}
+        data={chargeEvents[dropdownMenuOptions.indexOf(option)].chargeEvents}
         margin={{
           top: 20,
           right: 40,

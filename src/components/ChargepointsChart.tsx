@@ -2,6 +2,7 @@ import { useState } from "react";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
 import { ChartTooltip } from "./ui/Tooltip";
 import { ChartDropdown } from "./ui/Dropdown";
+import type { dummyData } from "../types/types";
 
 const ChargepointsChart = ({
   data,
@@ -9,7 +10,7 @@ const ChargepointsChart = ({
   title,
   description,
 }: {
-  data: any[];
+  data: dummyData[];
   dropdownMenuOptions?: string[];
   title: string;
   description: string;

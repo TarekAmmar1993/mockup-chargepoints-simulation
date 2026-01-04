@@ -59,3 +59,18 @@ export interface ChartDropdownProps {
   selected: string;
   onSelect: (option: string) => void;
 }
+
+// Dummy data types for charts (will be deleted later)
+interface dummyChargepoint {
+  chargepoint: string;
+  totalEnergyCharged: number;
+}
+interface ChargepointsByMonthData {
+  month: string;
+  chargepoints: dummyChargepoint[];
+}
+interface ChargepointsByDayData {
+  day: string;
+  chargepoints: dummyChargepoint[];
+}
+export type dummyData = ChargepointsByMonthData | ChargepointsByDayData;
