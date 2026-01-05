@@ -21,15 +21,48 @@ const Form = ({
 }) => {
   const { state, dispatch } = useFormContext();
   const [errors, setErrors] = useState<{
+    chargepoints: Record<string, string>;
     carConsumption: string;
     simulationInterval: string;
   }>({
+    chargepoints: {},
     carConsumption: "",
     simulationInterval: "",
   });
 
-  const handleBlur = (field: string) => {
+  const handleBlur = (field: string, id?: string) => {
     switch (field) {
+      case "chargepoints":
+        if (id) {
+          const chargepoint = state.chargepoints.find((cp) => cp.id === id);
+
+          if (chargepoint) {
+            if (chargepoint.count <= 0) {
+              setErrors((prev) => ({
+                ...prev,
+                chargepoints: {
+                  ...prev.chargepoints,
+                  [id]: "Count should be positive",
+                },
+              }));
+            } else if (!Number.isInteger(chargepoint.count)) {
+              setErrors((prev) => ({
+                ...prev,
+                chargepoints: {
+                  ...prev.chargepoints,
+                  [id]: "count should be an integer",
+                },
+              }));
+            } else {
+              setErrors((prev) => {
+                const updatedErrors = { ...prev.chargepoints };
+                delete updatedErrors[id];
+                return { ...prev, chargepoints: updatedErrors };
+              });
+            }
+          }
+        }
+        break;
       case "carConsumption":
         if (state.carConsumption <= 0) {
           setErrors((prev) => ({
@@ -69,6 +102,7 @@ const Form = ({
   const resetForm = () => {
     dispatch({ type: "RESET" });
     setErrors({
+      chargepoints: {},
       carConsumption: "",
       simulationInterval: "",
     });
@@ -77,7 +111,8 @@ const Form = ({
   };
 
   const isDisabled =
-    Object.values(errors).some((err) => err !== "") ||
+    Boolean(errors.carConsumption || errors.simulationInterval) ||
+    Object.keys(errors.chargepoints).length > 0 ||
     state.chargepoints.length === 0 ||
     !state.simulationInterval;
 
@@ -100,7 +135,10 @@ const Form = ({
           onSubmit={handleSubmit}
           className="grid grid-cols-1 gap-9 xl:grid-cols-2"
         >
-          <ChargepointConfigInput />
+          <ChargepointConfigInput
+            handleBlur={handleBlur}
+            errors={errors.chargepoints}
+          />
 
           <div className="mb-8">
             <label className="input-label" htmlFor="saturation">

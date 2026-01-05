@@ -3,7 +3,13 @@ import FormInput from "./ui/FormInput.tsx";
 import Button from "./ui/Button.tsx";
 import type { Chargepoint } from "../types/types";
 
-export function ChargepointConfigInput() {
+export function ChargepointConfigInput({
+  handleBlur,
+  errors,
+}: {
+  handleBlur: (field: string, id?: string) => void;
+  errors: { [key: string]: string };
+}) {
   const { state, dispatch } = useFormContext();
 
   const addChargepoint = () => {
@@ -26,7 +32,7 @@ export function ChargepointConfigInput() {
   ) => {
     dispatch({
       type: "UPDATE_CHARGEPOINT",
-      payload: { id, field, value: Math.max(1, value) },
+      payload: { id, field, value: value },
     });
   };
 
@@ -43,7 +49,7 @@ export function ChargepointConfigInput() {
             {state.chargepoints.map((chargepoint) => (
               <div
                 key={chargepoint.id}
-                className="relative flex w-fit items-end gap-3 rounded bg-white/5 p-4"
+                className="relative flex w-fit items-start gap-3 rounded bg-white/5 p-4"
               >
                 <FormInput
                   label="Count"
@@ -56,6 +62,8 @@ export function ChargepointConfigInput() {
                       Number(e.target.value),
                     )
                   }
+                  onBlur={() => handleBlur("chargepoints", chargepoint.id)}
+                  error={errors[chargepoint.id]}
                 />
                 <FormInput
                   label="Power (kW)"
@@ -65,7 +73,7 @@ export function ChargepointConfigInput() {
                     updateChargepoint(
                       chargepoint.id,
                       "power",
-                      Number(e.target.value),
+                      Math.max(1, Number(e.target.value)),
                     )
                   }
                 />
