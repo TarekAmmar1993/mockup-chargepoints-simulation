@@ -3,9 +3,7 @@ import FormInput from "./ui/FormInput.tsx";
 import Button from "./ui/Button.tsx";
 import type { Chargepoint } from "../types/types";
 
-interface ChargepointConfigInputProps {}
-
-export function ChargepointConfigInput({}: ChargepointConfigInputProps) {
+export function ChargepointConfigInput() {
   const { state, dispatch } = useFormContext();
 
   const addChargepoint = () => {

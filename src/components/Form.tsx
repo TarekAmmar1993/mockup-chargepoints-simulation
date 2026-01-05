@@ -10,8 +10,7 @@ const isFormEmpty = (state: State) => {
     state.chargepoints.length === 0 &&
     state.simulationInterval === 0 &&
     state.saturation === 100 &&
-    state.carConsumption === 18 &&
-    state.chargingPower === 11
+    state.carConsumption === 18
   );
 };
 
@@ -22,13 +21,25 @@ const Form = ({
 }) => {
   const { state, dispatch } = useFormContext();
   const [errors, setErrors] = useState<{
+    carConsumption: string;
     simulationInterval: string;
   }>({
+    carConsumption: "",
     simulationInterval: "",
   });
 
   const handleBlur = (field: string) => {
     switch (field) {
+      case "carConsumption":
+        if (state.carConsumption <= 0) {
+          setErrors((prev) => ({
+            ...prev,
+            carConsumption: "Car consumption should be positive",
+          }));
+        } else {
+          setErrors((prev) => ({ ...prev, carConsumption: "" }));
+        }
+        break;
       case "simulationInterval":
         if (state.simulationInterval <= 0) {
           setErrors((prev) => ({
@@ -58,6 +69,7 @@ const Form = ({
   const resetForm = () => {
     dispatch({ type: "RESET" });
     setErrors({
+      carConsumption: "",
       simulationInterval: "",
     });
     window.history.replaceState(null, "", "/");
@@ -127,27 +139,15 @@ const Form = ({
             name="carConsumption"
             value={state.carConsumption}
             placeholder="e.g: 60"
+            error={errors.carConsumption}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               dispatch({
                 type: "SET_CAR_CONSUMPTION",
                 payload: parseFloat(e.target.value),
               })
             }
+            onBlur={() => handleBlur("carConsumption")}
           />
-
-          <FormInput
-            label="Charging power per point (kW)"
-            name="chargingPower"
-            value={state.chargingPower}
-            placeholder="e.g: 60"
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              dispatch({
-                type: "SET_CHARGING_POWER",
-                payload: parseFloat(e.target.value),
-              })
-            }
-          />
-
           <FormInput
             label="Simulation interval (days)"
             name="simulationInterval"

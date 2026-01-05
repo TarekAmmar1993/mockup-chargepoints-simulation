@@ -5,7 +5,6 @@ const initialState: State = {
   chargepoints: [],
   saturation: 100,
   carConsumption: 18,
-  chargingPower: 11,
   simulationInterval: 0,
 };
 
@@ -38,8 +37,6 @@ function reducer(state: State, action: Action): State {
       return { ...state, saturation: action.payload };
     case "SET_CAR_CONSUMPTION":
       return { ...state, carConsumption: action.payload };
-    case "SET_CHARGING_POWER":
-      return { ...state, chargingPower: action.payload };
     case "SET_SIMULATION_INTERVAL":
       return { ...state, simulationInterval: action.payload };
     case "RESET":

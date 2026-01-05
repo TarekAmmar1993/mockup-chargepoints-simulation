@@ -31,12 +31,6 @@ const ResultsContent = () => {
             </p>
           </div>
           <div className="flex flex-col justify-between">
-            <p className="parameter-summary-title">Charging Power</p>
-            <p className="parameter-summary-content">
-              {state.chargingPower} kW
-            </p>
-          </div>
-          <div className="flex flex-col justify-between">
             <p className="parameter-summary-title">Duration</p>
             <p className="parameter-summary-content">
               {state.simulationInterval} days

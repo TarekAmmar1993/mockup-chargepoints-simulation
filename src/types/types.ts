@@ -13,7 +13,6 @@ export interface State {
   chargepoints: Chargepoint[];
   saturation: number;
   carConsumption: number;
-  chargingPower: number;
   simulationInterval: number;
 }
 
@@ -21,7 +20,6 @@ export type Action =
   | { type: "SET_CHARGEPOINTS"; payload: Chargepoint[] }
   | { type: "SET_SATURATION"; payload: number }
   | { type: "SET_CAR_CONSUMPTION"; payload: number }
-  | { type: "SET_CHARGING_POWER"; payload: number }
   | { type: "SET_SIMULATION_INTERVAL"; payload: number }
   | { type: "ADD_CHARGEPOINT"; payload: Chargepoint }
   | { type: "REMOVE_CHARGEPOINT"; payload: string }
